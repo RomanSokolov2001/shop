@@ -1,38 +1,45 @@
-import { ShopContextProvider } from "./context/shop-context";
-import Header from "./components/Header";
-import Shop from "./shop/Shop";
-import Cart from "./cart/cart";
-import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
 import Footer from "./components/footer/Footer";
+import Sidebar from "./components/sidebar/sidebar";
+import Shop from "./shop/Shop";
 import Hoodie from "./shop/Hoodie";
 import Shoes from "./shop/Shoes";
+import Cart from "./pages/cart/cart";
+import Else from "./pages/Else";
+import ProductPage from "./pages/ProductPage";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
-import Else from "./pages/Else";
-import PrivateRoutes from "./utils/PrivateRoutes";
+import About from "./pages/About";
+
 import { AuthProvider } from "./utils/AuthContext";
+import { ShopContextProvider } from "./utils/shop-context";
+import PrivateRoutes from "./utils/PrivateRoutes";
 
 function App() {
+  
   return (
     <div className="App">
       <ShopContextProvider>
         <AuthProvider>
           <Router>
             <Header />
-            <Routes>
-              <Route path="/" element={<Shop />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/home" element={<Shop />} />
-              <Route path="/hoodie" element={<Hoodie />} />
-              <Route path="/shoes" element={<Shoes />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/login" element={<LogIn />} />
-
-              <Route element={<PrivateRoutes />}>
+            <div className="shop">
+              <Sidebar />
+              <Routes>
+                <Route path="/" element={<Shop />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/home" element={<Shop />} />
+                <Route path="/hoodie" element={<Hoodie />} />
+                <Route path="/shoes" element={<Shoes />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/login" element={<LogIn />} />
+                <Route path="/product/:productId" element={<ProductPage />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/else" element={<Else />} />
-              </Route>
-            </Routes>
+                <Route element={<PrivateRoutes />}>{/* Private */}</Route>
+              </Routes>
+            </div>
             <Footer />
           </Router>
         </AuthProvider>

@@ -12,132 +12,88 @@ import hoodie5 from './assets/hoodie5.jpg'
 
 
 
-export const SHOES = [
-    {
-        id: 1,
-        productName: 'Shoes1',
-        price: 420.0,
-        productImage: shoes1,
-    },
-    {
-        id: 2,
-        productName: 'Shoes2',
-        price: 420.0,
-        productImage: shoes2,
-    },
-    {
-        id: 3,
-        productName: 'Shoes3',
-        price: 420.0,
-        productImage: shoes3,
-    },
-    {
-        id: 4,
-        productName: 'Shoes4',
-        price: 420.0,
-        productImage: shoes4,
-    },
-    {
-        id: 5,
-        productName: 'Shoes5',
-        price: 420.0,
-        productImage: shoes5,
-    },
-]
-
-export const HOODIES = [
-    {
-        id: 6,
-        productName: 'Hoodie1',
-        price: 420.0,
-        productImage: hoodie1,
-    },
-    {
-        id: 7,
-        productName: 'Hoodie2',
-        price: 420.0,
-        productImage: hoodie2,
-    },
-    {
-        id: 8,
-        productName: 'Hoodie3',
-        price: 420.0,
-        productImage: hoodie3,
-    },
-    {
-        id: 9,
-        productName: 'Hoodie4',
-        price: 420.0,
-        productImage: hoodie4,
-    },
-    {
-        id: 10,
-        productName: 'Hoodie5',
-        price: 420.0,
-        productImage: hoodie5,
-    },
-];
-
 export const PRODUCTS = [
     {
         id: 1,
-        productName: 'Shoes1',
-        price: 420.0,
+        type: 'shoes',
+        productName: 'Nike green',
+        price: 90.0,
         productImage: shoes1,
+        sizes: [38, 40, 41, 42, 43, 45]
     },
     {
         id: 2,
-        productName: 'Shoes2',
-        price: 420.0,
+        type: 'shoes',
+        productName: 'Nike blue',
+        price: 70.0,
         productImage: shoes2,
+        sizes: [38, 40, 41, 42, 43, 45]
+
     },
     {
         id: 3,
-        productName: 'Shoes3',
-        price: 420.0,
+        type: 'shoes',
+        productName: 'Nike blue',
+        price: 70.0,
         productImage: shoes3,
+        sizes: [38, 40, 41, 42, 43, 45]
+
     },
     {
         id: 4,
-        productName: 'Shoes4',
-        price: 420.0,
+        type: 'shoes',
+        productName: 'Vans black',
+        price: 110.0,
         productImage: shoes4,
+        sizes: [38, 40, 41, 42, 43, 45]
     },
     {
         id: 5,
-        productName: 'Shoes5',
-        price: 420.0,
+        type: 'shoes',
+        productName: 'Vans black',
+        price: 110.0,
         productImage: shoes5,
+        sizes: [38, 40, 41, 42, 43, 45]
     },
     {
         id: 6,
-        productName: 'Hoodie1',
-        price: 420.0,
+        type: 'hoodie',
+        productName: 'Hoodie grey',
+        price: 50.0,
         productImage: hoodie1,
+        sizes: ['s','m','l','xl']
     },
     {
         id: 7,
-        productName: 'Hoodie2',
-        price: 420.0,
+        type: 'hoodie',
+        productName: 'Hoodie black',
+        price: 50.0,
         productImage: hoodie2,
+        sizes: ['s','m','l','xl']
     },
     {
         id: 8,
-        productName: 'Hoodie3',
-        price: 420.0,
+        type: 'hoodie',
+        productName: 'Hoodie white',
+        price: 50.0,
         productImage: hoodie3,
+        sizes: ['s','m','l','xl']
     },
     {
         id: 9,
-        productName: 'Hoodie4',
-        price: 420.0,
+        type: 'hoodie',
+        productName: 'Hoodie grey',
+        price: 50.0,
         productImage: hoodie4,
+        sizes: ['s','m','l','xl']
     },
     {
         id: 10,
-        productName: 'Hoodie5',
-        price: 420.0,
+        type: 'hoodie',
+        productName: 'Hoodie blue',
+        price: 50.0,
         productImage: hoodie5,
+        sizes: ['s','m','l','xl']
     },
 ];
 

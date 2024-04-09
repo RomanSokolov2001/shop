@@ -25,11 +25,10 @@ const useScreenSize = () => {
       });
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
-    // Clean up the event listener when the component unmounts
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -39,6 +38,7 @@ const useScreenSize = () => {
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [isBurgerClicked, setIsBurgerClicked] = useState(false);
+  const [size, setSize] = useState();
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -67,7 +67,6 @@ export const ShopContextProvider = (props) => {
     setCartItems(getDefaultCart());
   };
 
-
   const contextValue = {
     isBurgerClicked,
     cartItems,
@@ -79,10 +78,9 @@ export const ShopContextProvider = (props) => {
     useScreenSize,
     isBurgerClicked,
     setIsBurgerClicked,
+    size,
+    setSize,
   };
-
-
-  
 
   return (
     <ShopContext.Provider value={contextValue}>

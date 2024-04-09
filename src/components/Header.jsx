@@ -1,10 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ShopContext } from "../utils/shop-context";
+import { useAuth } from "../utils/AuthContext";
+
 import SearchIcon from "@mui/icons-material/Search";
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import CloseIcon from "@mui/icons-material/Close";
-import { ShopContext } from "../context/shop-context";
-import { useAuth } from "../utils/AuthContext";
+import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+
 
 const Header = () => {
   const { userAuth, logoutUser } = useAuth();
@@ -14,32 +20,36 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="banner"> FIRST SS24 DROP IS OUT </div>
-      <div className="menu">
-        <div className="container">
-          <div className="container-item">
+      <div className="header-banner"> FIRST SS24 DROP IS OUT </div>
+      <div className="header-menu">
+        <div className="header-container">
+          <div className="header-container-item">
             <SearchIcon />
             <input className="pl-5 w-full" placeholder="Search"></input>
           </div>
-          <div className="container-item">
+          <div className="header-container-item">
             {userAuth ? (
-              <button onClick={()=>logoutUser()}> Log out </button>
+              <button onClick={() => logoutUser()}>
+                {screenSize.width > 500 ? <p>Log out </p> : <LogoutIcon />}{" "}
+              </button>
             ) : (
-              <div className="container-item">
-                <Link className="link" to="/login">
-                  Log in
+              <div className="header-container-item">
+                <Link className="header-link" to="/login">
+                  {screenSize.width > 500 ? <p>Log in </p> : <LoginIcon />}
                 </Link>
-                <Link className="link" to="/signup">
-                  Sign up
+                <Link className="header-link" to="/signup">
+                  {screenSize.width > 500 ? <p>Sign up </p> : ""}
                 </Link>
               </div>
             )}
-
-            <Link className="link" to="/cart">
-              Cart
+            <Link className="header-link" to="/cart">
+              {screenSize.width > 500 ? (
+                <p>Cart </p>
+              ) : (
+                <ShoppingCartIcon className="mr-4" />
+              )}
             </Link>
             <button
-              className="burger"
               hidden={screenSize.width > 500}
               onClick={() => setIsBurgerClicked((prev) => !prev)}
             >

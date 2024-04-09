@@ -1,8 +1,10 @@
 import React from 'react'
 
+
 const Else = () => {
+    
   return (
-    <div>Else</div>
+    <div className='shop'>Empty</div>
   )
 }
 

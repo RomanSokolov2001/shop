@@ -1,23 +1,20 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useRef } from "react";
-import { useEffect } from "react";
+import { useAuth } from "../utils/AuthContext";
 import {
   faCheck,
   faTimes,
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAuth } from "../utils/AuthContext";
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const USER_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const LOGIN_URL = "/login";
 
 const LogIn = () => {
   const navigate = useNavigate();
   const { userAuth, loginUser } = useAuth();
+
   useEffect(() => {
     if (userAuth) {
       navigate("/");
@@ -36,7 +33,6 @@ const LogIn = () => {
   const [pwdFocus, setPwdFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -58,16 +54,9 @@ const LogIn = () => {
     e.preventDefault();
     const email = user;
     const password = pwd;
-
-    // const v1 = USER_REGEX.test(user);
-    // const v2 = PWD_REGEX.test(pwd);
-    // if (!v1 || !v2) {
-    //   setErrMsg("Invalid Entry");
-    //   return;
-    // }
-    const userInfo = {email, password}
-    console.log(userInfo)
-    loginUser(userInfo)
+    const userInfo = { email, password };
+    console.log(userInfo);
+    loginUser(userInfo);
   };
 
   return (
@@ -152,15 +141,15 @@ const LogIn = () => {
         <b> Log in account </b>
         <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="username">
-            Username:
-            {/* <FontAwesomeIcon
+            Email:
+            <FontAwesomeIcon
               icon={faCheck}
               className={validName ? "valid" : "hide"}
             />
             <FontAwesomeIcon
               icon={faTimes}
               className={validName || !user ? "hide" : "invalid"}
-            /> */}
+            />
           </label>
           <input
             type="text"
@@ -182,11 +171,9 @@ const LogIn = () => {
             }
           >
             <FontAwesomeIcon icon={faInfoCircle} />
-            4 to 24 characters.
+            3 to 254 symbols.
             <br />
-            Must begin with a letter.
-            <br />
-            Letters, numbers, underscores, hyphens allowed.
+            Must have '@' and email domain.
           </p>
           <label htmlFor="password">
             Password:
@@ -228,10 +215,13 @@ const LogIn = () => {
             <span aria-label="percent">%</span>
           </p>
           <button className="addToCartBttn"> Log In </button>
-          <p> Don't have an account? </p>
-          <Link>
-            <p> Create </p>
-          </Link>
+          <p>
+            Don't have an account?
+            <br />
+            <span className="line">
+              <Link to="/signup"> Create </Link>
+            </span>
+          </p>
         </form>
       </section>
     </div>

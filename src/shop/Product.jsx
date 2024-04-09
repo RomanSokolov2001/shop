@@ -1,23 +1,24 @@
 import React, { useContext } from "react";
-import { ShopContext } from "../context/shop-context";
+import { Link } from "react-router-dom";
 
 const Product = (props) => {
-  const { id, productName, productImage, price } = props.data;
-  const { addToCart, cartItems } = useContext(ShopContext);
-  const cartItemAmount = cartItems[id];
+  const { id, productName, productImage, price, sizes } = props.data;
 
-  // product, description, addToCartBttn
   return (
     <div className="product hover:shadow-2xl">
       <img src={productImage} />
-      <div className='description'>
-        <b>{productName}</b> 
+      <div className="description">
+        <b>{productName}</b>
         <p>${price}</p>
       </div>
-      <button className='addToCartBttn hover:scale-110 transition ease-out duration-300' onClick={() => addToCart(id)}>
-        {" "}
-        Add To Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}
-      </button>
+      <Link
+        to={`/product/${id}`}
+        state={{ id, productName, productImage, price, sizes }}
+      >
+        <div className="addToCartBttn hover:scale-110 transition ease-out duration-300">
+          Show more
+        </div>
+      </Link>
     </div>
   );
 };
