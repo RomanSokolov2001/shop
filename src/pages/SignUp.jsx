@@ -38,6 +38,7 @@ const Register = () => {
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -71,8 +72,8 @@ const Register = () => {
 
     const userInfo = { email, password };
     registerUser(userInfo);
-
   };
+  
   return (
     <div className="shop">
       <style>{`
