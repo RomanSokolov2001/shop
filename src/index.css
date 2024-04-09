@@ -185,7 +185,9 @@
   justify-content: end;
 }
 
-.product img {
+.product-img {
+  margin-top: 110px;
+  height: 100%;
   width: 100%;
   border-radius: 5px;
 }

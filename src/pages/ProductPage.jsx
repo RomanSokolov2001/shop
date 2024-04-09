@@ -13,7 +13,7 @@ const ProductPage = () => {
   return (
     <div className="w-3/4" hidden={isBurgerClicked}>
       <div className="product-page">
-        <img className="product-img w-1/2" src={productImage} />
+        <img className="product-img" src={productImage} />
         <div className="product-desc w-1/2">
           <b>{productName}</b>
           <br /> <b>{price}$</b>
